@@ -22,7 +22,6 @@ function Home() {
   let trending = [];
 
   useEffect(() => {
-    console.log("hello");
     db.collection("movies").onSnapshot((snapshot) => {
       // eslint-disable-next-line array-callback-return
       snapshot.docs.map((doc) => {

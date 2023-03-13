@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { auth, provider } from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import {
   selectUserName,
   selectUserPhoto,
@@ -61,7 +61,9 @@ function Header() {
   return (
     <Nav>
       <Logo>
-        <img src="/images/logo.svg" alt="Disney+" />
+        <Link to="/">
+          <img src="/images/logo.svg" alt="Disney+" />
+        </Link>
       </Logo>
       {!userName ? (
         <Login onClick={handleAuth}>Login</Login>
@@ -94,6 +96,7 @@ function Header() {
             </a>
           </NavMenu>
           <SignOut>
+            <Description>{userName}</Description>
             <UserImg src={userPhoto} alt="User Photo" />
             <DropDown>
               <span onClick={handleAuth}>Sign Out</span>
@@ -131,10 +134,11 @@ const Logo = styled.a`
   max-height: 70px;
   font-size: 0;
   display: inline-block;
+  cursor: pointer;
 
   img {
-    display: block;
     width: 100%;
+    margin-bottom: 8px;
   }
 `;
 
@@ -241,16 +245,16 @@ const DropDown = styled.div`
 const SignOut = styled.div`
   position: relative;
   height: 48px;
-  width: 48px;
+  width: 240px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   cursor: pointer;
 
   ${UserImg} {
     border-radius: 50%;
-    width: 100%;
-    height: 100%;
+    width: 48px;
+    height: 48px;
   }
 
   &:hover {
@@ -259,4 +263,11 @@ const SignOut = styled.div`
       transition-duration: 1s;
     }
   }
+`;
+
+const Description = styled.p`
+  margin-left: 20px;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  font-weight: 600;
 `;
