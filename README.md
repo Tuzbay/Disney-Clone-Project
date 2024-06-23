@@ -1,6 +1,6 @@
 # Disney+ Clone Website</center>
 
-
+This project is a clone of Disney+'s official website. My goal was to create a similar site using modern web development techniques.
 
 ## LIVE Link: 
 
